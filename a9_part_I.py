@@ -8,8 +8,8 @@ import re
 # problem 1
 # should extract a match where the first group is the month, the second group the day
 # and the third group the year
-date_string = "November 9, 1982"
-pat = re.compile("REPLACE ME", re.IGNORECASE)
+date_string = "July 27, 2008"
+pat = re.compile("(\w+) (\d+), (\d{4})", re.IGNORECASE)
 date_matches = pat.match(date_string)
 
 # problem 2
@@ -30,13 +30,13 @@ hashtag_matches = pat.findall(tweet_string)
 if __name__ == "__main__":
     print("<<<<< Date Problem >>>>>\n")
     # uncomment the following prints to see date results and asserts to test
-    # print(f"month is: {date_matches.group(1)}!") # should print "month is: November"
-    # print(f"day is: {date_matches.group(2)}!")   # should print "day is: 9"
-    # print(f"year is: {date_matches.group(3)}!")  # should print "year is: 1982"
-    # assert date_matches.group(1) == 'November', "Incorrect month"
-    # assert date_matches.group(2) == '9', "Incorrect day"
-    # assert date_matches.group(3) == '1982', "Incorrect year"
-    # print('\n<<<< Date extraction tests passed >>>>\n')
+    print(f"month is: {date_matches.group(1)}!") # should print "month is: November"
+    print(f"day is: {date_matches.group(2)}!")   # should print "day is: 9"
+    print(f"year is: {date_matches.group(3)}!")  # should print "year is: 1982"
+    assert date_matches.group(1) == 'July', "Incorrect month"
+    assert date_matches.group(2) == '27', "Incorrect day"
+    assert date_matches.group(3) == '2008', "Incorrect year"
+    print('\n<<<< Date extraction tests passed >>>>\n')
 
     print("<<<<< Address Problem >>>>>\n")
     # uncomment the following prints to see results and asserts to test
