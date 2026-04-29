@@ -19,8 +19,9 @@ def get_planet_radius(planet_name: str) -> str:
         radius of the given planet
     """
     infobox_text = clean_text(get_first_infobox_text(get_page_html(planet_name)))
+    # print(infobox_text)
     # TODO: fill this in
-    pattern = "REPLACE ME"
+    pattern = "Polar radius(?P<radius>[\d.\n]+)"
     error_text = "Page infobox has no polar radius information"
     match = get_match(infobox_text, pattern, error_text)
     return match.group("radius")
@@ -57,12 +58,12 @@ if __name__ == "__main__":
     print(f'Saturn has a polar radius of {get_planet_radius("Saturn")}km')
 
     # uncomment below lines for tests once you think you're getting the right output
-    # print('\n<<<< Running asserts, this might take a sec >>>>')
-    # assert get_planet_radius("Mars") == "3376.2", "Incorrect radius for Mars"
-    # assert get_planet_radius("Earth") == "6356.752", "Incorrect radius for Earth"
-    # assert get_planet_radius("Jupiter") == "66854", "Incorrect radius for Jupiter"
-    # assert get_planet_radius("Saturn") == "54364", "Incorrect radius for Saturn"
-    # print('\n<<<< Planet radius tests passed >>>>')
+    print('\n<<<< Running asserts, this might take a sec >>>>')
+    assert get_planet_radius("Mars") == "3376.2", "Incorrect radius for Mars"
+    assert get_planet_radius("Earth") == "6356.752", "Incorrect radius for Earth"
+    assert get_planet_radius("Jupiter") == "66842", "Incorrect radius for Jupiter"
+    assert get_planet_radius("Saturn") == "54364", "Incorrect radius for Saturn"
+    print('\n<<<< Planet radius tests passed >>>>')
 
     print("\n<<<<<<<<<<<<<< Testing Birth Dates >>>>>>>>>>>>>>")
     # should be 1906-12-09
